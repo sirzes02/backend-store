@@ -21,6 +21,7 @@ module.exports = {
     },
     c001_email: { type: "string", required: true, unique: true, isEmail: true },
     c001_password: { type: "string", required: true, unique: true },
+    c001_notes: { type: "string", allowNull: true },
     c001_created_date: {
       type: "number",
       autoCreatedAt: true,
@@ -29,6 +30,8 @@ module.exports = {
       type: "number",
       autoUpdatedAt: true,
     },
+    c001_is_active: { type: "boolean", defaultsTo: true },
+    c001_creator_user: { type: "string", allowNull: true, defaultsTo: "Admin" },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
