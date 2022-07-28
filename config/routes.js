@@ -9,6 +9,6 @@
  */
 
 module.exports.routes = {
-
-
+  "POST /user/create": { controller: "UserController", action: "create" },
+  "GET /user/get_all": { controller: "UserController", action: "get_all" },
 };
