@@ -12,14 +12,7 @@ module.exports = {
     let results = null;
 
     try {
-      const password_crypt = await User.encrypt_password(
-        req.param("c001_password")
-      );
-
-      results = await User.create({
-        ...req.allParams(),
-        c001_password: password_crypt,
-      }).fetch();
+      results = await User.create(req.allParams()).fetch();
       status = "ok";
     } catch (local_error) {
       error = local_error;

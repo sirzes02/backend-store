@@ -40,10 +40,13 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
   },
-  encrypt_password: async (c001_password) => {
-    const salt = await bcrypt.genSalt(10);
 
-    return await bcrypt.hash(c001_password, salt);
+  beforeCreate: async (data, cb) => {
+    const salt = await bcrypt.genSalt(10);
+    const encrypted_passwod = await bcrypt.hash(data.c001_password, salt);
+
+    data.c001_password = encrypted_passwod;
+    cb();
   },
   customToJSON: function () {
     return _.omit(this, ["c001_password"]);
